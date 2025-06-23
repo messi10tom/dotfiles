@@ -1,0 +1,171 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30, // Slightly increased height for better padding with more modules
+    "spacing": 4, // Add a little space between modules
+
+    // Order of modules
+    "modules-left": [
+        "custom/arch",
+        "custom/user",
+        "custom/ivy",
+        "custom/ezexxekiel",
+        "custom/friday",
+        "hyprland/workspaces",
+        "hyprland/language"
+    ],
+
+    "modules-center": [
+      "hyprland/window"
+    ],
+
+    "modules-right": [
+//        "mpris",
+        "tray",
+        "network",
+        "cpu",
+        "custom/bluetooth",
+        "memory",
+        "temperature",
+        "battery",
+        "clock",
+        "custom/power"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "default": "",
+            "active": "",
+            "urgent": ""
+        },
+        "persistent_workspaces": {
+            "*": 5
+        }
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 35
+    },
+    "hyprland/language": {
+      "format": "󰌌 {}",
+      "format-en": "EN",
+      "format-ru": "RU",
+      "keyboard-name": "at-translated-set-2-keyboard",
+      "tooltip": false
+    },
+    "custom/arch": {
+        "format": "",
+        "tooltip": false
+    },
+
+    // NEW: User Badge
+    "custom/user": {
+        "format": " {}",
+        "exec": "whoami",
+        "tooltip": false
+    },
+
+    // NEW: Ivy Badge
+    "custom/ivy": {
+        "format": "󰌪 Ivy",
+        "tooltip": false
+    },
+
+    // NEW: Ezexxekiel Badge
+    "custom/ezexxekiel": {
+        "format": "󰙦 Ezexxekiel",
+        "tooltip": false
+    },
+
+    // NEW: Dynamic Friday Badge
+    "custom/friday": {
+        "format": "{}",
+        // This script checks if today is Friday (5) and prints the message. Otherwise, it prints nothing.
+        "exec": "if [ $(date +%u) -eq 5 ]; then echo 'Friday!!!!!! 󰸠'; fi",
+        "return-type": "text",
+        "tooltip": false
+    },
+
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-stopped": "",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵",
+            "spotify": ""
+        },
+        "dynamic-max-len": 30
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "clock": {
+        // Show Day, Date, Calendar Icon, Hour, Minute, Clock Icon
+        "format": "{:%a %d   %H:%M }",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // This command executes when you click the module
+        "on-click": "yad --calendar --undecorated --close-on-unfocus --no-buttons --title 'Calendar' --fixed --on-top"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% 󰂄",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "network": {
+        // Show download/upload speeds
+        "format-wifi": "{essid}    {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-ethernet": "{ifname}    {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-disconnected": "Disconnected ⚠",
+        "tooltip-format-wifi": "{ipaddr} ({signalStrength}%) via {gwaddr} ",
+        "on-click": "nm-connection-editor"
+    },
+    "custom/bluetooth": {
+      "format": {},
+      "interval": 5,
+      "exec": "$HOME/.config/waybar/bluetooth_script.sh",
+      "return-type": "json",
+      "on-click": "bluetoothctl",
+      "tooltip": true,
+      "tooltip-format": "{tooltip}"
+    },
+    //    "pulseaudio": {
+    //        "format": "{volume}% {icon}",
+    //        "format-bluetooth": "{volume}%  {icon}",
+    //        "format-icons": { "default": ["", "", ""] },
+    //        "on-click": "pavucontrol"
+    //    },
+    "cpu": {
+      "format": "{usage}% ",
+        "tooltip": true,
+        "on-click": "kitty btop"
+    },
+    "memory": {
+      "format": "{used:0.1f}GiB/{total:0.1f}GiB ({percentage}%)",
+      "format-alt": "{percentage}% | {avail:0.1f}GiB free",
+      "tooltip-format": "Used: {used:0.1f}GiB\nAvailable: {avail:0.1f}GiB\nTotal: {total:0.1f}GiB\nUsage: {percentage}%",
+      "on-click": "kitty btop",
+      "interval": 2
+    },
+    "temperature": {
+        "thermal-zone": 0,
+        "format": "{temperatureC}°C ",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C "
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "wlogout",
+        "tooltip": false
+    }
+}
