@@ -1,0 +1,184 @@
+/* Import Catppuccin Macchiato theme */
+@import url("catppuccin/themes/macchiato.css");
+
+* {
+    font-family: JetBrains Mono Nerd Font, FontAwesome;
+    font-size: 14px; /* Slightly larger font for clarity */
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: @base;
+    color: @text;
+    transition-property: background-color;
+    transition-duration: .5s;
+    border-radius: 15px;
+}
+
+/* Custom Badges */
+#custom-user {
+    color: @crust;
+    background-color: @teal;
+}
+
+#custom-ivy {
+    color: @crust;
+    background-color: @green;
+}
+
+#custom-ezexxekiel {
+    color: @crust;
+    background-color: @sapphire;
+}
+
+#custom-friday {
+    color: @crust;
+    background-color: @flamingo;
+    border-radius: 10px; /* Ensure it's rounded even when it appears/disappears */
+}
+
+
+
+/* --- Base Module Styles --- */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#tray,
+#mpris,
+#hyprland-language,
+#custom-arch,
+#custom-power,
+#custom-user,
+#custom-ivy,
+#custom-ezexxekiel,
+#custom-bluetooth,
+#custom-friday {
+    padding: 0 10px;
+    margin: 3px; /* Add vertical margin for a "floating" look */
+    color: @text;
+    background-color: @surface0;
+    border-radius: 10px;
+}
+
+#workspaces button {
+    padding: 2px 5px;
+    margin: 0 3px;
+    background-color: transparent;
+    color: @mauve;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: @surface1;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    border-radius: 10px;
+}
+
+#workspaces button.focused {
+    background-color: @lavender;
+    color: @base;
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+}
+
+/* --- New Module Colors --- */
+
+#custom-arch {
+    color: @sky;
+    background-color: @surface0;
+    font-size: 18px;
+    padding: 0 12px;
+}
+
+#hyprland-language {
+    color: @green;
+    background: @surface0;
+}
+
+#mpris {
+    color: @yellow;
+    background: @surface0;
+}
+
+#temperature {
+    color: @crust;
+    background-color: @peach;
+}
+
+#temperature.critical {
+    background-color: @red;
+}
+
+
+/* --- Existing Module Colors (from previous setup) --- */
+
+#clock {
+    background-color: @sky;
+    color: @crust;
+}
+
+#battery {
+    background-color: @green;
+    color: @crust;
+}
+
+#battery.charging, #battery.plugged {
+    color: @crust;
+    background-color: @teal;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: @red;
+    color: @crust;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu {
+    background-color: @flamingo;
+    color: @crust;
+}
+
+#memory {
+    background-color: @mauve;
+    color: @crust;
+}
+
+#network {
+    background-color: @blue;
+    color: @crust;
+}
+
+#network.disconnected {
+    background-color: @red;
+}
+
+#custom-power {
+    background-color: @red;
+    color: @crust;
+    margin-right: 8px;
+}
+
+#custom-bluetooth {
+    color: #61afef;
+    font-weight: bold;
+}
+
