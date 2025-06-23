@@ -1,0 +1,16 @@
+[[mgr.prepend_keymap]]
+on = [ "<C-e>" ]
+run = "shell 'nvim \"$0\"' --block --confirm"
+desc = "Edit with nvim"
+
+[[mgr.prepend_keymap]]
+on = [ "<C-c>" ]
+run = "shell 'nu -c \"cd \"$0\"' --block --confirm"
+desc = "Change directory to selected folder (Nushell)"
+
+[[mgr.prepend_keymap]]
+on = "<C-y>"
+run = '''
+shell 'yadm add "$@" && yadm commit -m "added $(basename "$1")" && echo "✔ Added $(echo "$@" | wc -w) file(s) to yadm"' --block --confirm
+'''
+desc = "yadm add selected items (simple)"
